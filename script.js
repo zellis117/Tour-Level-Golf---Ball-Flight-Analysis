@@ -131,10 +131,10 @@ var startLine = function() {
 //Asks user about curvature of their shot
 var curve = function() {
     //change image
-    if(choiceB == 1){image.src = "./images/curve/" + strike + "Curve" + choiceB + ".jpg";}
-    if(choiceB == 2){image.src = "./images/curve/" + strike + "Curve" + choiceB + ".jpg";}
-    if(choiceB == 3){image.src = "./images/curve/" + strike + "Curve" + choiceB + ".jpg";}
-    if(choiceB == 4){image.src = "./images/curve/" + strike + "Curve" + choiceB + ".jpg";}
+    if(choiceB == 1){image.src = "./images/Curve/" + strike + "Curve" + choiceB + ".jpg";}
+    if(choiceB == 2){image.src = "./images/Curve/" + strike + "Curve" + choiceB + ".jpg";}
+    if(choiceB == 3){image.src = "./images/Curve/" + strike + "Curve" + choiceB + ".jpg";}
+    if(choiceB == 4){image.src = "./images/Curve/" + strike + "Curve" + choiceB + ".jpg";}
     //Change button tags
     var c1 = document.createElement('button');
     var c2 = document.createElement('button');
