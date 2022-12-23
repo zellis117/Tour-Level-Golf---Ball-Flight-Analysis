@@ -238,16 +238,16 @@ var height = function() {
 //Asks about divot in the ground
 var divot = function() {
     //change image
-    image.src = "./images/filler image.jpg";
+    image.src = "./images/divots.jpg";
     //Change button tags
     var e1 = document.createElement('button');
     var e2 = document.createElement('button');
     var e3 = document.createElement('button');
     var e4 = document.createElement('button');
-    e1.textContent = "Long and ahead of the ball";
-    e2.textContent = "Shallow and ahead of the ball";
+    e1.textContent = "Deep and ahead of the ball";
+    e2.textContent = "No divot";
     e3.textContent = "Behind the ball";
-    e4.textContent = "No divot";
+    e4.textContent = "Shallow and ahead of the ball";
     e1.className += 'blue';
     e2.className += 'green';
     e3.className += 'yellow';
@@ -263,33 +263,92 @@ var divot = function() {
     //Button listeners for newly generated buttons
     e1.addEventListener("click", function(){
         choiceE = 1;
+        divotPattern = "Deep and ahead of the ball";
         end();
         removeOld(e1,e2,e3,e4);
     } );
     e2.addEventListener("click", function(){
         choiceE = 2;
+        divotPattern = "No divot";
         end();
         removeOld(e1,e2,e3,e4);
     } );
     e3.addEventListener("click", function(){
         choiceE = 3;
+        divotPattern = "Behind the ball";
         end();
         removeOld(e1,e2,e3,e4);
     } );
     e4.addEventListener("click", function(){
         choiceE = 4;
+        divotPattern = "Shallow and ahead of the ball";
         end();
         removeOld(e1,e2,e3,e4);
     } );
 }
 
+//Determines what videos should be reccomended
+var reccomendDrills = function() {
+    if(choiceA == 1 || choiceA == 4){
+        //display gate drill
+        var link1 = document.createElement('a');
+        var photo1 = document.createElement('img');
+        list.appendChild(link1);
+        link1.appendChild(photo1);
+        photo1.setAttribute("src","./images/DrillPhotos/gate.jpg");
+        link1.setAttribute("href","https://drive.google.com/file/d/1yC8trO_O9VbKWLxYIkmfPtM2qPyvT1un/view?usp=sharing");
+        link1.setAttribute("target","_blank");
+    }
+
+    if(choiceC == 3 ||  choiceC == 4){
+        //display P2 drill and downswing drill
+        var link2 = document.createElement('a');
+        var photo2 = document.createElement('img');
+        list.appendChild(link2);
+        link2.appendChild(photo2);
+        photo2.setAttribute("src","./images/DrillPhotos/takaway.jpg");
+        link2.setAttribute("href","https://drive.google.com/file/d/1IhGEi-JbQttUpkTRVMi7_3yBjgyqTiIZ/view?usp=share_link");
+        link2.setAttribute("target","_blank");
+
+        var link3 = document.createElement('a');
+        var photo3 = document.createElement('img');
+        list.appendChild(link3);
+        link3.appendChild(photo3);
+        photo3.setAttribute("src","./images/DrillPhotos/downPath.jpg");
+        link3.setAttribute("href","https://drive.google.com/file/d/1geD2teBNGGC_mcSC7zrawtJseO7cUh-r/view?usp=share_link");
+        link3.setAttribute("target","_blank");
+    }
+
+    if(choiceD == 1 || choiceD == 4){
+        //display towel drill
+        var link4 = document.createElement('a');
+        var photo4 = document.createElement('img');
+        list.appendChild(link4);
+        link4.appendChild(photo4);
+        photo4.setAttribute("src","./images/DrillPhotos/towel.jpg");
+        link4.setAttribute("href","https://drive.google.com/file/d/114YYNRqCROQZUk796Sf2XYpXu6ix4oq5/view?usp=sharing");
+        link4.setAttribute("target","_blank");
+    } else{
+        if(choiceE == 2 || choiceE == 3){
+            //display towel drill
+            var link5 = document.createElement('a');
+            var photo5 = document.createElement('img');
+            list.appendChild(link5);
+            link5.appendChild(photo5);
+            photo5.setAttribute("src","./images/DrillPhotos/towel.jpg");
+            link5.setAttribute("href","https://drive.google.com/file/d/114YYNRqCROQZUk796Sf2XYpXu6ix4oq5/view?usp=sharing");
+            link5.setAttribute("target","_blank");
+         }
+    }
+}
+
 //Outlines problems and displays recommended drills
 var end = function() {
-    var yourStrike = document.createElement('p');
-    var yourStartLine = document.createElement('p');
-    var yourCurve = document.createElement('p');
-    var yourHeight = document.createElement('p');
-    var yourDivot = document.createElement('p');
+    var yourStrike = document.createElement('h4');
+    var yourStartLine = document.createElement('h4');
+    var yourCurve = document.createElement('h4');
+    var yourHeight = document.createElement('h4');
+    var yourDivot = document.createElement('h4');
     list.appendChild(yourStrike);
     list.appendChild(yourStartLine);
     list.appendChild(yourCurve);
@@ -301,9 +360,15 @@ var end = function() {
     yourHeight.textContent = "Height: " + peakHeight;
     yourDivot.textContent = "Divot: " + divotPattern;
 
-    question.textContent = "Results and Recommendation";
+    var rec = document.createElement('h1');
+    list.appendChild(rec);
+    rec.textContent = 'Reccomended Drills:';
+
+    reccomendDrills();
+
+    question.textContent = "Results:";
     image.remove();
 }
 
-//Listens for the tsrat button click to start the diagnosis
+//Listens for the start button click to start the diagnosis
 start.addEventListener("click", startQuestions);
