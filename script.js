@@ -238,7 +238,7 @@ var height = function() {
 //Asks about divot in the ground
 var divot = function() {
     //change image
-    image.src = "./images/divots.jpg";
+    image.src = "./images/divots.JPG";
     //Change button tags
     var e1 = document.createElement('button');
     var e2 = document.createElement('button');
